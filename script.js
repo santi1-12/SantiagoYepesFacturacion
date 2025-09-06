@@ -3,6 +3,10 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
 
     // Tomar valores
     const nombre = document.getElementById('nombre').value.trim();
+<<<<<<< HEAD
+=======
+    const idCliente = document.getElementById('idCliente').value.trim();
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
     const telefono = document.getElementById('telefono').value.trim();
     const email = document.getElementById('email').value.trim();
     const tipoServicio = parseInt(document.getElementById('tipoServicio').value);
@@ -10,11 +14,17 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
     const dias = parseInt(document.getElementById('dias').value);
     const diasAdicionales = parseInt(document.getElementById('diasAdicionales').value);
 
+<<<<<<< HEAD
     // Generar ID automático
     const idCliente = generarIdCliente();
 
     // Validaciones estrictas
     const nombreValido = /^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,}$/.test(nombre);
+=======
+    // Validaciones estrictas
+    const nombreValido = /^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{3,}$/.test(nombre);
+    const idValido = /^[0-9]{3,}$/.test(idCliente);
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
     const telefonoValido = /^[0-9]{7,15}$/.test(telefono);
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -22,6 +32,13 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
         alert("Nombre inválido. Debe contener solo letras y tener mínimo 3 caracteres.");
         return;
     }
+<<<<<<< HEAD
+=======
+    if (!idValido) {
+        alert("ID Cliente inválido. Debe contener solo números y tener mínimo 3 dígitos.");
+        return;
+    }
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
     if (!telefonoValido) {
         alert("Teléfono inválido. Debe contener mínimo 7 dígitos numéricos.");
         return;
@@ -52,14 +69,20 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
     let valorAlquiler = equipos * dias * valorPorDia;
     let valorAdicionales = equipos * diasAdicionales * valorPorDia;
 
+<<<<<<< HEAD
     // Descuento por días adicionales (1% por día, máx 6%)
     let descuentoAdicional = Math.min(diasAdicionales * 0.01, 0.06);
     let valorDescuentoAdicional = equipos * diasAdicionales * valorPorDia * descuentoAdicional;
+=======
+    // Descuento por días adicionales (máx 10%)
+    let descuentoAdicional = Math.min(diasAdicionales * 0.02, 0.10);
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
     valorAdicionales *= (1 - descuentoAdicional);
 
     let incremento = 0;
     let descuento = 0;
     let tipoServicioTexto = "";
+<<<<<<< HEAD
     let descripcionServicio = "";
     const beneficiosAplicados = [];
 
@@ -95,6 +118,26 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
     const total = valorAlquiler + valorAdicionales + incremento - descuento;
 
     // Construir factura con HTML
+=======
+
+    switch (tipoServicio) {
+        case 1:
+            tipoServicioTexto = "Dentro de la Ciudad";
+            break;
+        case 2:
+            tipoServicioTexto = "Fuera de la Ciudad";
+            incremento = 0.05 * (valorAlquiler + valorAdicionales);
+            break;
+        case 3:
+            tipoServicioTexto = "Dentro del Establecimiento";
+            descuento = 0.05 * (valorAlquiler + valorAdicionales);
+            break;
+    }
+
+    const total = valorAlquiler + valorAdicionales + incremento - descuento;
+
+    // Construir factura con HTML para mejor presentación
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
     const facturaHTML = `
         <div class="factura-box">
             <h2>Factura Generada - A L Q U I P C</h2>
@@ -104,6 +147,7 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
             <p><strong>Email:</strong> ${email}</p>
             <hr>
             <p><strong>Tipo de Servicio:</strong> ${tipoServicioTexto}</p>
+<<<<<<< HEAD
             <p><em>${descripcionServicio}</em></p>
             <p><strong>Número de Equipos:</strong> ${equipos}</p>
             <p><strong>Días Iniciales:</strong> ${dias}</p>
@@ -118,6 +162,15 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
             <ul>
                 ${beneficiosAplicados.map(b => `<li>${b}</li>`).join('')}
             </ul>
+=======
+            <p><strong>Número de Equipos:</strong> ${equipos}</p>
+            <p><strong>Días Iniciales:</strong> ${dias}</p>
+            <p><strong>Valor Alquiler:</strong> $${valorAlquiler.toLocaleString()}</p>
+            <p><strong>Días Adicionales:</strong> ${diasAdicionales}</p>
+            <p><strong>Valor Días Adicionales:</strong> $${valorAdicionales.toLocaleString()}</p>
+            <p><strong>Descuentos:</strong> $${descuento.toLocaleString()}</p>
+            <p><strong>Incrementos:</strong> $${incremento.toLocaleString()}</p>
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
             <hr>
             <p><strong>Total a pagar:</strong> <span style="color:#0077b6; font-size: 1.3em;">$${total.toLocaleString()}</span></p>
             <p style="margin-top:20px; font-style: italic; text-align: center;">Factura generada. Gracias por utilizar nuestros servicios.</p>
@@ -126,6 +179,7 @@ document.getElementById('facturaForm').addEventListener('submit', function (e) {
 
     document.getElementById('resultado').innerHTML = facturaHTML;
 });
+<<<<<<< HEAD
 
 // Función para generar ID Cliente aleatorio
 function generarIdCliente() {
@@ -133,3 +187,5 @@ function generarIdCliente() {
     const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
     return `ALQ-${timestamp.slice(-5)}-${random}`;
 }
+=======
+>>>>>>> 732c3b0744b2b266eb669a86392791c82f99f01e
