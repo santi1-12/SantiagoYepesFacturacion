@@ -1,100 +1,139 @@
-/* Reset básico */
+/* 🎨 Reset básico */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
+  }
+  
+  body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-.container {
+    padding: 30px;
+    color: #333;
+  }
+  
+  /* 📦 Contenedor general */
+  .page-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  /* 📝 Tarjetas */
+  .container {
     background: #fff;
     padding: 30px 40px;
     border-radius: 15px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-h1 {
-    color: #333;
-    margin-bottom: 30px;
+    flex: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 🏷️ Título */
+  h1 {
+    color: #222;
+    margin-bottom: 25px;
     font-weight: 700;
-    letter-spacing: 1.5px;
-}
-
-form {
+    font-size: 1.6rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+    border-bottom: 3px solid #2575fc;
+    padding-bottom: 10px;
+  }
+  
+  /* 📋 Formulario */
+  form {
     text-align: left;
-}
-
-label {
+    background: #f0f4ff; /* color suave dentro del form */
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  label {
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
-    color: #555;
+    color: #444;
     font-size: 0.95rem;
-}
-
-input,
-select {
+  }
+  
+  input,
+  select {
     width: 100%;
     padding: 12px 15px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
+    margin-bottom: 18px;
+    border: 2px solid #cfd8ff;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
-
-input:focus,
-select:focus {
-    border-color: #74ebd5;
+    transition: all 0.3s ease;
+    background: #fff;
+  }
+  
+  input:focus,
+  select:focus {
+    border-color: #2575fc;
     outline: none;
-    box-shadow: 0 0 5px #74ebd5;
-}
-
-button {
-    background: #74ebd5;
+    box-shadow: 0 0 6px rgba(37, 117, 252, 0.5);
+  }
+  
+  /* 🔘 Botón */
+  button {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
     color: #fff;
     border: none;
-    padding: 15px;
+    padding: 14px;
     width: 100%;
     border-radius: 10px;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background: #3ac6d4;
-}
-
-.factura {
-    background: #f9f9f9;
-    margin-top: 30px;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    transform: scale(1.02);
+  }
+  
+  /* 🧾 Factura tipo recibo */
+  .factura {
+    background: linear-gradient(135deg, #e3f2fd, #e1bee7); /* degradado suave */
     padding: 25px 30px;
     border-radius: 15px;
     font-family: 'Courier New', Courier, monospace;
     white-space: pre-wrap;
-    box-shadow: inset 0 0 10px #ccc;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
     color: #222;
-    line-height: 1.5;
+    line-height: 1.6;
     font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-    .container {
-        padding: 20px 25px;
+    border-left: 5px solid #2575fc;
+  }
+  
+  .factura h2 {
+    text-align: center;
+    color: #6a11cb;
+    margin-bottom: 15px;
+  }
+  
+  .factura p strong {
+    color: #2575fc;
+  }
+  
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    .page-container {
+      flex-direction: column;
     }
-}
+  }
+  
